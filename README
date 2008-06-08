@@ -1,0 +1,20 @@
+Todoist-share is a Sinatra microapp for sharing your Todoist.com projects with others.
+
+Todoist.com is a free todo list app that works pretty darn well and has some slick features. Unfortunately, it has no sharing capabilities. If you manage a list for someone else, sharing the list with that person sucks: their styles and scripts make emailing or copying/pasting really horrible. This app lets me publish the list as a read-only page at an obfuscated URL. 
+
+
+
+Unusual Gem Dependencies:
+	Sinatra
+	json
+
+To start:
+ 	
+	1. Change the TOKEN to your Todoist.com API key (found under Preferences > Account)
+	
+	2. Change SUPER_SECRET_HASH to whatever string you want, if you care.
+
+	3. ruby share.rb
+	
+	4. And open your browser to http://127.0.0.1:4567/
+

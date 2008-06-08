@@ -1,16 +1,22 @@
 require 'rubygems'
 require 'sinatra'
 require 'json'
-require 'rio'
 require 'net/http'
 require 'digest/md5'
 
+module ConstantsModule
+  # TOKEN is your Todoist API token. Do not share this with anyone.
+  TOKEN = "your token here"
+  
+  # SUPER_SECRET_HASH is used in the URL string just for a bit of the obfuscation
+  SUPER_SECRET_HASH = Digest::MD5.hexdigest("do your damn job, erik")
+end
 
-TOKEN = "fc096ab6f674d9bf61f2879e5c620c16e1c3441b"
-SUPER_SECRET_HASH = Digest::MD5.hexdigest("do your damn job, erik")
+include ConstantsModule
 
 get '/' do
-  # redirect 'http://oit.nd.edu/'
+  redirect 'http://oit.nd.edu/'
+
   # just find and show all the scores
   @lists = grab_json("http://todoist.com/API/getProjects?token=#{TOKEN}")
   erb :index
@@ -35,11 +41,12 @@ end
 
 def grab_json(url)
   fetcher = MemFetcher.new
-
+  # the 120 is the length in seconds that it should remain cached in memory
   JSON.parse(fetcher.fetch(url, 120))
 end
 
-
+# From Yahoo!
+# TODO: Is this really doing anything? I think not.
 class MemFetcher
    def initialize
       # we initialize an empty hash
