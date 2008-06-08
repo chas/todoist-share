@@ -1,0 +1,10 @@
+<h3>Fucking A.</h3>
+
+<h4><%= @list['name'] %></h4>
+
+<ul>
+	<% for item in @items %>
+		<li class="<%= item['indent'] %>"><%= item['content'] %></li>
+	<% end %>
+</ul>
+

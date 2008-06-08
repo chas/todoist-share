@@ -1,0 +1,7 @@
+<h3>Sweet.</h3>
+
+<ul>
+	<% for list in @lists %>
+		<li class="<%= list['indent'] %>"><a href="/list/<%= list['id'] %><%= SUPER_SECRET_HASH %>"><%= list['name'] %></a></td>
+	<% end %>
+</ul>
